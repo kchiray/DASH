@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.Speech.Recognition;
+using System.Diagnostics;
 
 namespace DashConsole
 {
@@ -23,7 +24,7 @@ namespace DashConsole
 
             SpeechRecognitionEngine rec = new SpeechRecognitionEngine(new System.Globalization.CultureInfo("en-US"));
 
-            choices.Add(new String[] { "hello", "how are you" });
+            choices.Add(new String[] { "hello", "how are you", "open primary applications" });
 
             Grammar grammar = new Grammar(new GrammarBuilder(choices));
 
@@ -58,6 +59,13 @@ namespace DashConsole
             if(r == "how are you")
             {
                 Say("i am fine uh, thanks uh");
+            }
+
+            if (r == "open primary applications")
+            {
+                Say("okay");
+                Process.Start(@"C:\Users\csc\Desktop\GoPassCSCBO.exe");
+                Process.Start("https://outlook.office.com/owa/?path=/mail/inbox");
             }
         }
                 
